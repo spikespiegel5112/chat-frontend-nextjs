@@ -1,0 +1,127 @@
+.chatlist_container {
+  // padding: 0.8rem;
+  height: 100vh;
+  background: #e7f8ff;
+  color: #303030;
+  position: relative;
+  box-sizing: border-box;
+  overflow: auto;
+  z-index: 3;
+  background: #fff;
+  .scroller {
+    height: calc(100% - 2rem);
+    z-index: 1;
+    position: relative;
+  }
+
+  .header {
+    display: flex;
+    padding: 0.5rem;
+    z-index: 1;
+    position: relative;
+    .left {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: left;
+      font-size: 1.5rem;
+    }
+    h1 {
+      margin: 0;
+      flex: 1;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: left;
+      .logo {
+        display: inline-block;
+        margin: 0.1rem 0 0 0;
+        width: 2.2rem;
+        height: 0.8rem;
+        background-image: url("@/assets/yiyan-logo.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 0;
+        height: 100%;
+        vertical-align: middle;
+      }
+      .el-text {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+    .right {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: right;
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 0;
+        height: 100%;
+        vertical-align: middle;
+      }
+      .common_button_item {
+        vertical-align: middle;
+      }
+    }
+  }
+  .chatlist {
+    padding: 0 0.5rem;
+    z-index: 1;
+    li {
+      padding: 0.2rem 0.4rem;
+      margin: 0 0 0.4rem 0;
+      border: 1px solid #ccc;
+      border-radius: 0.3rem;
+      font-size: 0.4rem;
+      background-color: #fff;
+      transition: 0.3s all;
+      &.active {
+        border: 1px solid #1677ff;
+        background-color: #1677ff;
+        color: #fff;
+        .delete {
+          color: #fff;
+        }
+      }
+      .delete {
+        color: #333;
+      }
+      &:target {
+        background-color: #111;
+      }
+
+      .top {
+        display: flex;
+        margin: 0 0 0.3rem 0;
+        width: 100%;
+        text-align: right;
+        align-items: center;
+        justify-content: center;
+        label {
+          display: inline-block;
+          flex: 1;
+          text-align: left;
+          font-weight: bold;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        .delete {
+          display: inline-block;
+          font-size: 0.4rem;
+        }
+      }
+
+      .desc {
+        display: flex;
+        .left {
+          flex: 1;
+        }
+      }
+    }
+  }
+}
