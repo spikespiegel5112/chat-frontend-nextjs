@@ -1,6 +1,7 @@
 import axios from "axios";
+console.log("service+++++", process);
 
-const _baseURL: string = process.env.VITE_BASE_URL;
+const _baseURL: string | undefined = process.env
 
 const service: any = axios.create({
   baseURL: _baseURL,
