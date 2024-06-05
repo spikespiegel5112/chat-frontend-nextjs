@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import styles from "./page.module.scss";
+import "./page.scss";
 import { Button } from "antd";
 import utils from "@/utils/utils";
 import { getChatListRequest, createChatRequest } from "@/requests/chat";
@@ -123,31 +123,27 @@ export default function ChatList() {
     });
   }, []);
   return (
-    <main className={styles.chatlist_container}>
-      <div className={styles.header}>
+    <main className="chatlist_container">
+      <div className="header">
         <h1>
           <div className="logo"></div>
         </h1>
-        <div className={styles.right}>
+        <div className="right">
           <Button type="primary" onClick={() => handleCreateChat()}>
             新的对话
           </Button>
         </div>
       </div>
-      <div className={styles.scroller}>
-        <ul className={styles.chatlist}>
+      <div className="scroller">
+        <ul className="chatlist">
           {chatList.map((item: any, index: number) => {
             return (
-              <li className={item.active ? styles.active : ""} key={index}>
+              <li className={item.active ? "active" : ""} key={index}>
                 <div className="top">
                   <label>
                     {utils.$isEmpty(item.title) ? "新的聊天" : item.title}
                   </label>
-                  <Button
-                    className={styles.delete}
-                    size="small"
-                    type="link"
-                  ></Button>
+                  <Button className="delete" size="small" type="link"></Button>
                 </div>
 
                 <div className="desc">

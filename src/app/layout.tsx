@@ -4,8 +4,9 @@ import "./global.scss";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 const inter = Inter({ subsets: ["latin"] });
 import "normalize.css";
-import styles from "./layout.module.scss";
-import "./layout.module.scss";
+import "./global.scss";
+import "./layout.scss";
+import "./mobile.scss";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,9 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className} id="#app">
-        <div className={styles.layout_container}>
-          <AntdRegistry>{children}</AntdRegistry>
+      <body className={inter.className}>
+        <div id="app">
+          <div className="layout_container mobile">
+            <AntdRegistry>{children}</AntdRegistry>
+          </div>
         </div>
       </body>
     </html>
