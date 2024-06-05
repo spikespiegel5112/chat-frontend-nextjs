@@ -1,7 +1,8 @@
 import axios from "axios";
-console.log("service+++++", process);
+console.log("process123+++++", process.env.NEXT_PUBLIC_BASE_URL);
 
-const _baseURL: string | undefined = process.env
+const _baseURL: string | undefined = process.env.NEXT_PUBLIC_BASE_URL;
+console.log("_baseURL+++++", _baseURL);
 
 const service: any = axios.create({
   baseURL: _baseURL,

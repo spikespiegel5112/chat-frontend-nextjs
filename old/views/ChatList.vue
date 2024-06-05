@@ -1,44 +1,26 @@
 <template>
-  <div
-    class="chatlist_container"
-    :class="currentExpendStatus ? 'expend' : 'shrink'"
-  >
+  <div class="chatlist_container" :class="currentExpendStatus ? 'expend' : 'shrink'">
     <div class="header">
       <h1>
         <div class="logo"></div>
         <!-- <img :src.sync="state.yiyanLogoSrc" /> -->
       </h1>
       <div class="right">
-        <a-button
-          @click="handleCreateChat"
-          :icon="h(PlusOutlined)"
-          :disabled="state.processingFlag"
-          type="primary"
-        >
+        <a-button @click="handleCreateChat" :icon="h(PlusOutlined)" :disabled="state.processingFlag" type="primary">
           新的对话
         </a-button>
       </div>
     </div>
     <el-scrollbar class="scroller" height="100%" v-loading="state.loadingChatListFlag">
       <ul class="chatlist">
-        <li
-          :class="{ active: item.active }"
-          v-for="(item, index) in currentChatList"
-          :key="index"
-          @click="handleChooseChat(item, index)"
-        >
+        <li :class="{ active: item.active }" v-for="(item, index) in currentChatList" :key="index"
+          @click="handleChooseChat(item, index)">
           <div class="top">
             <label for="">
               {{ global.$isEmpty(item.title) ? "新的聊天" : item.title }}
             </label>
-            <a-button
-              class="delete"
-              size="small"
-              type="link"
-              :icon="h(DeleteOutlined)"
-              :disabled="state.processingFlag"
-              @click.stop="handleDeleteChat(item, index)"
-            ></a-button>
+            <a-button class="delete" size="small" type="link" :icon="h(DeleteOutlined)" :disabled="state.processingFlag"
+              @click.stop="handleDeleteChat(item, index)"></a-button>
           </div>
 
           <div class="desc">
@@ -148,11 +130,11 @@ const getChatListPromise = () => {
   return new Promise((resolve, reject) => {
     const params = global.$checkIfWeLink()
       ? {
-          welinkUserId: global.$store.state.user.userIdInfo.welinkUserId,
-        }
+        welinkUserId: global.$store.state.user.userIdInfo.welinkUserId,
+      }
       : {
-          guestUserId: global.$store.state.user.userIdInfo.guestUserId,
-        };
+        guestUserId: global.$store.state.user.userIdInfo.guestUserId,
+      };
     getChatListRequest(params)
       .then((response: any) => {
         console.log("getChatListPromise+++++", response);
@@ -516,6 +498,7 @@ onMounted(async () => {
   overflow: auto;
   z-index: 3;
   background: #fff;
+
   .scroller {
     height: calc(100% - 2rem);
     z-index: 1;
@@ -527,18 +510,21 @@ onMounted(async () => {
     padding: 0.5rem;
     z-index: 1;
     position: relative;
+
     .left {
       display: inline-block;
       vertical-align: middle;
       text-align: left;
       font-size: 1.5rem;
     }
+
     h1 {
       margin: 0;
       flex: 1;
       display: inline-block;
       vertical-align: middle;
       text-align: left;
+
       .logo {
         display: inline-block;
         margin: 0.1rem 0 0 0;
@@ -548,6 +534,7 @@ onMounted(async () => {
         background-size: contain;
         background-repeat: no-repeat;
       }
+
       &:before {
         content: "";
         display: inline-block;
@@ -555,15 +542,18 @@ onMounted(async () => {
         height: 100%;
         vertical-align: middle;
       }
+
       .el-text {
         display: inline-block;
         vertical-align: middle;
       }
     }
+
     .right {
       display: inline-block;
       vertical-align: middle;
       text-align: right;
+
       &:before {
         content: "";
         display: inline-block;
@@ -571,14 +561,17 @@ onMounted(async () => {
         height: 100%;
         vertical-align: middle;
       }
+
       .common_button_item {
         vertical-align: middle;
       }
     }
   }
+
   .chatlist {
     padding: 0 0.5rem;
     z-index: 1;
+
     li {
       padding: 0.2rem 0.4rem;
       margin: 0 0 0.4rem 0;
@@ -587,17 +580,21 @@ onMounted(async () => {
       font-size: 0.4rem;
       background-color: #fff;
       transition: 0.3s all;
+
       &.active {
         border: 1px solid #1677ff;
         background-color: #1677ff;
         color: #fff;
+
         .delete {
           color: #fff;
         }
       }
+
       .delete {
         color: #333;
       }
+
       &:target {
         background-color: #111;
       }
@@ -609,6 +606,7 @@ onMounted(async () => {
         text-align: right;
         align-items: center;
         justify-content: center;
+
         label {
           display: inline-block;
           flex: 1;
@@ -618,6 +616,7 @@ onMounted(async () => {
           white-space: nowrap;
           text-overflow: ellipsis;
         }
+
         .delete {
           display: inline-block;
           font-size: 0.4rem;
@@ -626,6 +625,7 @@ onMounted(async () => {
 
       .desc {
         display: flex;
+
         .left {
           flex: 1;
         }
@@ -643,16 +643,19 @@ onMounted(async () => {
     }
   }
 }
+
 .el-overlay {
   .confirmdelete_drawer {
     .a-drawer__header {
       font-size: 0.5rem;
+
       h4 {
         margin: 0;
         text-align: left;
       }
     }
   }
+
   .confirmdelete_dialog {
     .el-dialog__body {
       font-size: 0.5rem;
